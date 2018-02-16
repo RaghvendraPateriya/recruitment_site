@@ -26,6 +26,8 @@ Setup Django Project
 Go to(```cd```) the directory where 'manage.py', after run below command in shell.
 
 ```
+$ python manage.py makemigrations
+$ python manage.py migrate
 $ python manage.py createsuperuser --username admin --email admin@admin.com
 
 <set password>
@@ -44,6 +46,6 @@ Point your browser 127.0.0.1:8000
 URLs
 ====
 
-- Application Submit form: http://localhost:<port> eg. http://127.0.0.1:8000
+- Application Submit form: http://localhost:<port>/index eg. http://127.0.0.1:8000/index
 - Administration Page: http://localhost:<port>/admin eg. http://127.0.0.1:8000/admin
   pass those credential which we use at command "python manage.py createsuperuser --username admin --email admin@admin.com"

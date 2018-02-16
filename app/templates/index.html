@@ -19,15 +19,15 @@
     {% csrf_token %}
     <div class="form-group">
         <label for="first_name">First Name:</label>
-        <input type="text" class="form-control" id="first_name" name="first_name">
+        <input type="text" class="form-control" id="first_name" name="first_name" required>
     </div>
     <div class="form-group">
         <label for="last_name">Last Name:</label>
-        <input type="text" class="form-control" id="last_name" name="last_name">
+        <input type="text" class="form-control" id="last_name" name="last_name" required>
     </div>
     <div class="form-group">
       <label for="email">Email:</label>
-      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required>
     </div>
     <div class="form-group">
         <label class="radio-inline">
@@ -49,32 +49,31 @@
       </div>
       <div class="form-group">
           <label class="passing_year">Year of Passing:</label>
-          <input type="number" min="0" class="form-control" id="passing_year" name="passing_year">
+          <input type="number" min="0" class="form-control" id="passing_year" name="passing_year" required>
       </div>
       <div class="form-group">
           <label class="percentage">Percentage:</label>
-          <input type="number" min="0" class="form-control" id="percentage" name="percentage">
+          <input type="number" min="0" class="form-control" id="percentage" name="percentage" required>
       </div>
       <div class="form-group">
         <label for="company">Current/Previous Company Name:</label>
-        <input type="text" class="form-control" id="company" name="company">
+        <input type="text" class="form-control" id="company" name="company" required>
       </div>
       <div class="form-group">
           <label class="ctc">CTC:</label>
-          <input type="number" min="0" class="form-control" id=ctc name="ctc">
+          <input type="number" min="0" class="form-control" id=ctc name="ctc" required>
       </div>
       <div class="form-group">
           <label class="experience">Experience in years:</label>
-          <input type="number" class="form-control" min="0" class="form-control" id="experience" name="experience">
+          <input type="number" class="form-control" min="0" class="form-control" id="experience" name="experience" required>
       </div>
     <div class="form-group">
       <label for="skills">Skills:</label>
-      <input type="text" class="form-control" id="skills" placeholder="Python, Django, HTML" name="skills">
+      <input type="text" class="form-control" id="skills" placeholder="Python, Django, HTML" name="skills" required>
     </div>
 
     <button type="submit" class="btn btn-default">Submit</button>
   </form>
 </div>
-
 </body>
 </html>

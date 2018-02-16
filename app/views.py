@@ -16,7 +16,6 @@ class UserApplication(View):
         return render(request, self.template_name)
 
     def post(self, request, *args, **kwargs):
-        print(request.POST)
         form = ApplicationForm(request.POST)
 
         if form.is_valid():
@@ -27,12 +26,11 @@ class UserApplication(View):
                 username=form.cleaned_data['email'],
                 email=form.cleaned_data['email'])
             # Create skill.
-            skill_list = form.cleaned_data['skills'].split(',')
+            skill_list = set(i.strip().lower() for i in form.cleaned_data['skills'].split(','))
             skill_obj = set()
-            for sikll in skill_list:
-                obj, created = SkillSet.objects.get_or_create(name=sikll)
-                skill_obj.add(obj.id)
-
+            for skill in skill_list:
+                obj, created = SkillSet.objects.get_or_create(name=skill)
+                skill_obj.add(obj)
             obj, created = UserDetail.objects.get_or_create(user =user_obj,
                 gender=form.cleaned_data['gender'],
                 qualification=form.cleaned_data['qualification'],
@@ -44,13 +42,7 @@ class UserApplication(View):
             if created:
                 for i in skill_obj:
                    obj.skills.add(i)
-            return HttpResponse("Thanks for registration, HR Team will contact you soon.")
+            return HttpResponse("<center><b>Thanks for registration, HR Team will contact you soon.</b></center>")
         else:
             error_fields = dict(json.loads(form.errors.as_json())).keys()
             return render(request, self.template_name, {'errors': error_fields})
-
-class ReviewApplication(View):
-
-    def get(self):
-        pass
-
