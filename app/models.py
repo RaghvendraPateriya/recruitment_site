@@ -1,6 +1,8 @@
 from django.contrib.auth.models import User
 from django.db import models
 
+from .utils import GENDER_CHOICES, QUALIFICATION_CHOICES
+
 
 class SkillSet(models.Model):
     id = models.AutoField(primary_key=True)
@@ -14,19 +16,10 @@ class SkillSet(models.Model):
 
 
 class UserDetail(models.Model):
-    GENDER_CHOICES = (
-        ('male', 'Male'),
-        ('female', 'Female'),
-    )
-    QUALIFICATION_CHOICES = (
-        ('btech', 'B Tech'),
-        ('bsc', 'BSc (IT)'),
-        ('mca', 'MCA'),
-    )
-
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES)
-    qualification = models.CharField(max_length=100)
+    qualification = models.CharField(max_length=100,
+                                     choices=QUALIFICATION_CHOICES)
     passing_year = models.IntegerField()
     percentage = models.IntegerField()
     company = models.CharField(max_length=100)
